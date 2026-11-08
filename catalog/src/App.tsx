@@ -64,7 +64,14 @@ export default function App(){
    </section>
    <section className="visit-note"><h2>Перед визитом</h2><p>Проверьте часы работы и адрес в Google Картах. У заведений с несколькими филиалами выберите нужный перед построением маршрута.</p><p>Для четырёх отметок точный адрес ещё не уточнён. На их карточках доступен поиск в Картах.</p></section>
   </main>
-  <footer><a className="brand footer-brand" href="#">Азисов Тамирлан</a><p>Стамбул / 72 места<br/><span>Данные собраны 7 ноября 2026</span></p><a className="footer-top" href="#">Наверх</a></footer>
+  <footer className="tile-footer" aria-label="Подвал сайта">
+   <div className="footer-tile" style={{backgroundPosition:'0% 0%'}}><a className="tile-label tile-signature" href="#">Азисов<br/>Тамирлан</a></div>
+   <div className="footer-tile" style={{backgroundPosition:'33.333333% 0%'}} aria-hidden="true"/>
+   <div className="footer-tile" style={{backgroundPosition:'100% 0%'}}><p className="tile-label tile-caption">Стамбул / 72 места<br/><span>7 ноября 2026</span></p></div>
+   <div className="footer-tile" style={{backgroundPosition:'0% 20%'}} aria-hidden="true"/>
+   <div className="footer-tile" style={{backgroundPosition:'66.666667% 20%'}}><a className="tile-label tile-back" href="#">Наверх</a></div>
+   <div className="footer-tile" style={{backgroundPosition:'100% 20%'}} aria-hidden="true"/>
+  </footer>
   <div className={'toast '+(toast?'show':'')} role="status" aria-live="polite">{toast}</div>
  </>;
 }
