@@ -24,3 +24,10 @@ main{padding:0 48px}.workspace{max-width:1504px;margin:0 auto;display:grid;grid-
 .footer-tile{min-width:0;aspect-ratio:1;overflow:hidden;background-image:url("./assets/iznik-tiles.png?inline");background-size:400% 600%;background-repeat:no-repeat;background-color:#f4ead5}
 @media(max-width:900px){.tile-footer{grid-template-columns:repeat(8,minmax(0,1fr));gap:1px;padding:1px}}
 @media print{.tile-footer{display:none}}
+
+/* Card actions share equal space and a consistent touch target. */
+.card-actions .bookmark-button{width:100%!important;height:48px!important;min-height:48px!important;padding:8px 16px!important;border-left:1px solid var(--line)!important;border-radius:0!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:12px!important;line-height:16px!important;color:#555!important}
+.card-actions .bookmark-button.bookmarked{color:#111!important}
+.catalog-content>.results-header:first-of-type{margin-top:0}
+@media(max-width:850px){.catalog-content>.mobile-filter{width:100%!important;margin-bottom:24px!important}.catalog-content>.mobile-filter-panel{margin-bottom:24px}.card-actions .bookmark-button{font-size:13px!important}}
+@media(hover:hover) and (pointer:fine){.card-actions .bookmark-button:hover{background:#111!important;color:#fff!important;text-decoration:none}}
