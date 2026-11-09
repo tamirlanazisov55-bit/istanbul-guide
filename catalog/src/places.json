@@ -6,7 +6,7 @@
     "description": "Пекарня. Выпечка и десерты.",
     "query": "B.BLOK Bakery İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=B.BLOK+Bakery+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/B.BLOK+Bakery/data=!4m7!3m6!1s0x14cab7a0299f0ca9:0x87acb260d750c735!8m2!3d41.0436501!4d29.0018806!16s%2Fg%2F11bzvf8z12!19sChIJqQyfKaC3yhQRNcdQ12CyrIc",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=B.BLOK+Bakery+%C4%B0stanbul"
   },
   {
@@ -106,7 +106,7 @@
     "description": "Курица и бургеры. Филиал в Кадыкёе.",
     "query": "Salt Fried Chicken Kadıköy İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Salt+Fried+Chicken+Kad%C4%B1k%C3%B6y+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/Salt+Fried+Chicken+Kad%C4%B1k%C3%B6y/data=!4m7!3m6!1s0x14cab9e3428da00f:0xead77a9d41bfdea9!8m2!3d40.9883437!4d29.0278754!16s%2Fg%2F11qq1ntdry!19sChIJD6CNQuO5yhQRqd6_QZ161-o",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=Salt+Fried+Chicken+Kad%C4%B1k%C3%B6y+%C4%B0stanbul"
   },
   {
@@ -146,7 +146,7 @@
     "description": "Ресторан турецкой кухни.",
     "query": "Saray Lokantasi İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saray+Lokantasi+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/Saray+Lokantasi/data=!4m7!3m6!1s0x14cab75e180f1757:0x4a36a341ab4a4f37!8m2!3d41.0358031!4d28.9754363!16s%2Fg%2F11c71pgwvt!19sChIJVxcPGF63yhQRN09Kq0GjNko",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=Saray+Lokantasi+%C4%B0stanbul"
   },
   {
@@ -186,7 +186,7 @@
     "description": "Заведение с манты в Джихангире.",
     "query": "1932 Cihangir Doyum Mantı İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1932+Cihangir+Doyum+Mant%C4%B1+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/1932+Cihangir+Doyum+Mant%C4%B1/@41.0312749,28.9823566,17z/data=!3m1!4b1!4m6!3m5!1s0x14cab7621ed44923:0xf486f8e7a73c3cce!8m2!3d41.0312749!4d28.9823566!16s%2Fg%2F11c1szrdt6",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=1932+Cihangir+Doyum+Mant%C4%B1+%C4%B0stanbul"
   },
   {
@@ -236,7 +236,7 @@
     "description": "Кафе с видом на Галату.",
     "query": "Ceneviz Cafe İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ceneviz+Cafe+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/Ceneviz+Cafe/data=!4m7!3m6!1s0x14cab9e70cc59011:0x622a0d69fbe60a62!8m2!3d41.0256883!4d28.9745149!16s%2Fg%2F1vntxwmr!19sChIJEZDFDOe5yhQRYgrm-2kNKmI",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=Ceneviz+Cafe+%C4%B0stanbul"
   },
   {
@@ -266,7 +266,7 @@
     "description": "Заведение с морепродуктами.",
     "query": "Ali Usta İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ali+Usta+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/Ali+Usta/@40.9903655,29.027756,17z/data=!3m1!4b1!4m6!3m5!1s0x14cab9126d87eacb:0x128a6461a9ac432f!8m2!3d40.9903655!4d29.027756!16s%2Fg%2F11svkf42cz",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=Ali+Usta+%C4%B0stanbul"
   },
   {
@@ -286,7 +286,7 @@
     "description": "Турецкая кухня. Специализация — кёфте.",
     "query": "Tarihi Sultanahmet Köftecisi Selim Usta İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tarihi+Sultanahmet+K%C3%B6ftecisi+Selim+Usta+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/Tarihi+Sultanahmet+K%C3%B6ftecisi+Selim+Usta/data=!4m7!3m6!1s0x40887625c5655441:0xd91b76ddaca1b4a!8m2!3d41.0080082!4d28.9769068!16s%2Fg%2F1tgx52ms!19sChIJQVRlxSV2iEARShvK2m23kQ0",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=Tarihi+Sultanahmet+K%C3%B6ftecisi+Selim+Usta+%C4%B0stanbul"
   },
   {
@@ -366,7 +366,7 @@
     "description": "Кафе с завтраками.",
     "query": "Fein İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fein+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/Fein/data=!4m7!3m6!1s0x14cab98cb5119ba7:0xea4fb508c6292830!8m2!3d40.9803926!4d29.0232669!16s%2Fg%2F11lm_6hdsl!19sChIJp5sRtYy5yhQRMCgpxgi1T-o",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=Fein+%C4%B0stanbul"
   },
   {
@@ -406,7 +406,7 @@
     "description": "Кофейня.",
     "query": "MONTAG İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MONTAG+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/MONTAG/data=!4m7!3m6!1s0x14cab906b12fce61:0x9dca2fd0a972e2dd!8m2!3d40.9847833!4d29.0257309!16s%2Fg%2F11hf20_xxl!19sChIJYc4vsQa5yhQR3eJyqdAvyp0",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=MONTAG+%C4%B0stanbul"
   },
   {
@@ -446,7 +446,7 @@
     "description": "Книжный магазин.",
     "query": "Minoa Pera İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Minoa+Pera+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/Minoa+Pera/data=!4m7!3m6!1s0x14cab9a3bf6d20ab:0x847b85ed898ab101!8m2!3d41.029924!4d28.97326!16s%2Fg%2F11vb6g8tt2!19sChIJqyBtv6O5yhQRAbGKie2Fe4Q",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=Minoa+Pera+%C4%B0stanbul"
   },
   {
@@ -696,7 +696,7 @@
     "description": "Бутик.",
     "query": "WUNDER İstanbul",
     "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=WUNDER+%C4%B0stanbul",
+    "mapsUrl": "https://www.google.com/maps/place/WUNDER/data=!4m7!3m6!1s0x14cab86018d449e5:0x18b8d18ecd2c0223!8m2!3d40.984051!4d29.023599!16s%2Fg%2F11bxfjys74!19sChIJ5UnUGGC4yhQRIwIszY7RuBg",
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=WUNDER+%C4%B0stanbul"
   },
   {
