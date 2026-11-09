@@ -1,6 +1,8 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {Button} from './toolcraft/components/primitives/button';
 import sourcePlaces from './places.json';
+import collectionCsv from './collection.csv?raw';
+const collectionDownload='data:text/csv;charset=utf-8,'+encodeURIComponent('\uFEFF'+collectionCsv);
 
 type Place = typeof sourcePlaces[number];
 const places:Place[]=sourcePlaces;
@@ -28,6 +30,7 @@ export default function App(){
  const [mobileFilters,setMobileFilters]=useState(false);
  const [toast,setToast]=useState('');
  const [storageUnavailable,setStorageUnavailable]=useState(false);
+ const collectionDialog=useRef<HTMLDialogElement>(null);
  const toastTimer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);
  useEffect(()=>{try{localStorage.setItem(STORE,JSON.stringify([...saved]));setStorageUnavailable(false);}catch{setStorageUnavailable(true);}},[saved]);
  useEffect(()=>{const fn=(e:KeyboardEvent)=>{if(e.key==='Escape')setMobileFilters(false);};window.addEventListener('keydown',fn);return()=>{window.removeEventListener('keydown',fn);clearTimeout(toastTimer.current);}},[]);
@@ -36,6 +39,7 @@ export default function App(){
  const visible=result.slice(0,limit);
  function announce(s:string){setToast(s);clearTimeout(toastTimer.current);toastTimer.current=setTimeout(()=>setToast(''),2700);}
  function toggleSaved(p:Place){setSaved(prev=>{const next=new Set(prev);next.has(p.id)?next.delete(p.id):next.add(p.id);return next;});announce(saved.has(p.id)?'Место удалено из сохранённых':'Место сохранено');}
+ function saveCollection(){setSaved(new Set(places.map(p=>p.id)));collectionDialog.current?.close();announce('Все 72 места добавлены в сохранённые на этом устройстве');}
  function chooseCategory(c:string){setCategory(c);setLimit(24);setMobileFilters(false);}
  function reset(){setCategory('Все места');setSavedOnly(false);setLimit(24);}
  const activeFilters=category!=='Все места'||savedOnly;
@@ -43,7 +47,16 @@ export default function App(){
  function filterNav(){return <nav aria-label="Категории мест" className="category-nav"><Button variant="ghost" size="xl" className={'category-button '+(category==='Все места'?'is-current':'')} aria-pressed={category==='Все места'} onClick={()=>chooseCategory('Все места')}><span className="category-number">00</span><span>Все места</span><span className="count">{countFor('Все места')}</span></Button>{categories.map(({name},i)=><Button key={name} variant="ghost" size="xl" className={'category-button '+(category===name?'is-current':'')} aria-pressed={category===name} onClick={()=>chooseCategory(name)}><span className="category-number">{String(i+1).padStart(2,'0')}</span><span>{name}</span><span className="count">{countFor(name)}</span></Button>)}</nav>;}
  return <>
   <a className="skip-link" href="#catalog">Перейти к местам</a>
-  <header className="site-header"><a href="#" className="brand" aria-label="Азисов Тамирлан — начало">Азисов Тамирлан</a><div className="city-label">Стамбул <span>/ 72 места</span></div><Button variant="outline" size="xl" className={'saved-top '+(savedOnly?'selected':'')} aria-label={'Сохранённые '+saved.size} aria-pressed={savedOnly} onClick={()=>{setSavedOnly(!savedOnly);setLimit(24);setCategory('Все места');}}><span>Сохранённые</span><span className="saved-counter">{saved.size}</span></Button></header>
+  <header className="site-header"><a href="#" className="brand" aria-label="Азисов Тамирлан — начало">Азисов Тамирлан</a><div className="city-label">Стамбул <span>/ 72 места</span></div><div className="header-actions"><Button variant="outline" size="xl" className="collection-top" onClick={()=>collectionDialog.current?.showModal()}>Сохранить подборку</Button><Button variant="outline" size="xl" className={'saved-top '+(savedOnly?'selected':'')} aria-label={'Сохранённые '+saved.size} aria-pressed={savedOnly} onClick={()=>{setSavedOnly(!savedOnly);setLimit(24);setCategory('Все места');}}><span>Сохранённые</span><span className="saved-counter">{saved.size}</span></Button></div></header>
+  <dialog ref={collectionDialog} className="collection-dialog" aria-labelledby="collection-title" aria-describedby="collection-description" onClick={e=>{if(e.target===e.currentTarget)collectionDialog.current?.close();}}>
+   <div className="collection-dialog-body">
+    <div className="collection-dialog-heading"><span>Стамбул / 72 места</span><Button variant="ghost" className="dialog-close" aria-label="Закрыть сохранение подборки" onClick={()=>collectionDialog.current?.close()}>Закрыть</Button></div>
+    <h2 id="collection-title">Сохранить подборку</h2>
+    <p id="collection-description">Все 72 места с категориями, описаниями и ссылками на Google Карты.</p>
+    <section className="collection-option"><h3>На этом устройстве</h3><p>Добавьте всю подборку в раздел «Сохранённые». Она останется в этом браузере.</p><Button className="collection-primary" onClick={saveCollection}>Сохранить все 72 места</Button>{storageUnavailable&&<p role="status">Хранилище браузера недоступно. Скачайте CSV, чтобы сохранить подборку.</p>}</section>
+    <section className="collection-option"><h3>В Google My Maps</h3><p>Скачайте файл и импортируйте его в свою карту на компьютере.</p><div className="collection-export-actions"><a href={collectionDownload} download="istanbul-72-places.csv">Скачать CSV</a><a href="https://www.google.com/maps/d/" target="_blank" rel="noopener noreferrer">Открыть My Maps</a></div><details><summary>Как добавить места на карту</summary><ol><li>В My Maps создайте карту и нажмите «Импорт».</li><li>Загрузите CSV. Для расположения выберите «Место для поиска», для названий — «Название».</li><li>Проверьте найденные адреса и филиалы. У четырёх мест расположение требует уточнения.</li></ol><p>Это отдельная карта My Maps. Импорт не добавляет места в обычные списки Google Карт.</p><a href="https://support.google.com/mymaps/answer/3024836?hl=ru" target="_blank" rel="noopener noreferrer">Инструкция Google</a></details></section>
+   </div>
+  </dialog>
   <main>
    <section className="workspace" id="catalog" aria-label="Каталог мест">
     <aside className="sidebar"><div className="sidebar-title">Категории</div>{filterNav()}<div className="sidebar-note"><p>Соберите свою подборку.<br/><span>{storageUnavailable?'В этом браузере сохранения доступны только до закрытия страницы.':'Сохранённые места останутся в этом браузере.'}</span></p></div></aside>
