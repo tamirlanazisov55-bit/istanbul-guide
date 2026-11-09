@@ -430,16 +430,6 @@
     "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=MUUS+Coffee+%26+Matcha+%C4%B0stanbul"
   },
   {
-    "id": "p44",
-    "name": "NOH Radio Bar",
-    "category": "Бары",
-    "description": "Бар.",
-    "query": "NOH Radio Bar İstanbul",
-    "needsLocation": false,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=NOH+Radio+Bar+%C4%B0stanbul",
-    "routeUrl": "https://www.google.com/maps/dir/?api=1&destination=NOH+Radio+Bar+%C4%B0stanbul"
-  },
-  {
     "id": "p45",
     "name": "Minoa Pera",
     "category": "Книги и культура",

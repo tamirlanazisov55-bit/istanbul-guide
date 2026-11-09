@@ -17,7 +17,6 @@ const categories=[
  {name:'Прогулки и виды', caption:'Районы, смотровые точки и пляжи'},
  {name:'Книги и культура', caption:'Книги, искусство и фотобудка'},
  {name:'Магазины', caption:'Одежда, парфюмерия и подарки'},
- {name:'Бары', caption:'Вечерняя остановка'},
  {name:'Отели', caption:'Места для проживания'},
 ];
 const STORE='istanbul-places-saved-v1';
@@ -42,7 +41,7 @@ export default function App(){
  const visible=result.slice(0,limit);
  function announce(s:string){setToast(s);clearTimeout(toastTimer.current);toastTimer.current=setTimeout(()=>setToast(''),2700);}
  function toggleSaved(p:Place){setSaved(prev=>{const next=new Set(prev);next.has(p.id)?next.delete(p.id):next.add(p.id);return next;});announce(saved.has(p.id)?'Место удалено из сохранённых':'Место сохранено');}
- function saveCollection(){setSaved(new Set(places.map(p=>p.id)));collectionDialog.current?.close();announce('Все 72 места добавлены в сохранённые на этом устройстве');}
+ function saveCollection(){setSaved(new Set(places.map(p=>p.id)));collectionDialog.current?.close();announce('Вся подборка добавлена в сохранённые на этом устройстве');}
  function chooseCategory(c:string){setCategory(c);setLimit(24);setMobileFilters(false);}
  function reset(){setCategory('Все места');setSavedOnly(false);setLimit(24);}
  const activeFilters=category!=='Все места'||savedOnly;
@@ -50,14 +49,14 @@ export default function App(){
  function filterNav(){return <nav aria-label="Категории мест" className="category-nav"><Button variant="ghost" size="xl" className={'category-button '+(category==='Все места'?'is-current':'')} aria-pressed={category==='Все места'} onClick={()=>chooseCategory('Все места')}><span>Все места</span><span className="count">{countFor('Все места')}</span></Button>{categories.map(({name})=><Button key={name} variant="ghost" size="xl" className={'category-button '+(category===name?'is-current':'')} aria-pressed={category===name} onClick={()=>chooseCategory(name)}><span>{name}</span><span className="count">{countFor(name)}</span></Button>)}</nav>;}
  return <>
   <a className="skip-link" href="#catalog">Перейти к местам</a>
-  <header className="site-header"><a href="#" className="brand" aria-label="Азисов Тамирлан — начало">Азисов Тамирлан</a><div className="city-label">Стамбул <span>/ 72 места</span></div><div className="header-actions"><Button variant="outline" size="xl" className="collection-top" onClick={()=>collectionDialog.current?.showModal()}>Сохранить подборку</Button><Button variant="outline" size="xl" className={'saved-top '+(savedOnly?'selected':'')} aria-label={'Сохранённые '+saved.size} aria-pressed={savedOnly} onClick={()=>{setSavedOnly(!savedOnly);setLimit(24);setCategory('Все места');}}><span>Сохранённые</span><span className="saved-counter">{saved.size}</span></Button></div></header>
+  <header className="site-header"><a href="#" className="brand" aria-label="Азисов Тамирлан — начало">Азисов Тамирлан</a><div className="city-label">Стамбул <span>/ {places.length} {plural(places.length)}</span></div><div className="header-actions"><Button variant="outline" size="xl" className="collection-top" onClick={()=>collectionDialog.current?.showModal()}>Сохранить подборку</Button><Button variant="outline" size="xl" className={'saved-top '+(savedOnly?'selected':'')} aria-label={'Сохранённые '+saved.size} aria-pressed={savedOnly} onClick={()=>{setSavedOnly(!savedOnly);setLimit(24);setCategory('Все места');}}><span>Сохранённые</span><span className="saved-counter">{saved.size}</span></Button></div></header>
   <dialog ref={collectionDialog} className="collection-dialog" aria-labelledby="collection-title" aria-describedby="collection-description" onClick={e=>{if(e.target===e.currentTarget)collectionDialog.current?.close();}}>
    <div className="collection-dialog-body">
-    <div className="collection-dialog-heading"><span>Стамбул / 72 места</span><Button variant="ghost" className="dialog-close" aria-label="Закрыть сохранение подборки" onClick={()=>collectionDialog.current?.close()}>Закрыть</Button></div>
+    <div className="collection-dialog-heading"><span>Стамбул / {places.length} {plural(places.length)}</span><Button variant="ghost" className="dialog-close" aria-label="Закрыть сохранение подборки" onClick={()=>collectionDialog.current?.close()}>Закрыть</Button></div>
     <h2 id="collection-title">Сохранить подборку</h2>
-    <p id="collection-description">Все 72 места с категориями, описаниями и ссылками на Google Карты.</p>
-    <section className="collection-option"><h3>На этом устройстве</h3><p>Добавьте всю подборку в раздел «Сохранённые». Она останется в этом браузере.</p><Button className="collection-primary" onClick={saveCollection}>Сохранить все 72 места</Button>{storageUnavailable&&<p role="status">Хранилище браузера недоступно. Скачайте CSV, чтобы сохранить подборку.</p>}</section>
-    <section className="collection-option"><h3>В Google My Maps</h3><p>Скачайте файл и импортируйте его в свою карту на компьютере.</p><div className="collection-export-actions"><a href={collectionDownload} download="istanbul-72-places.csv">Скачать CSV</a><a href="https://www.google.com/maps/d/" target="_blank" rel="noopener noreferrer">Открыть My Maps</a></div><details><summary>Как добавить места на карту</summary><ol><li>В My Maps создайте карту и нажмите «Импорт».</li><li>Загрузите CSV. Для расположения выберите «Место для поиска», для названий — «Название».</li><li>Проверьте найденные адреса и филиалы. У четырёх мест расположение требует уточнения.</li></ol><p>Это отдельная карта My Maps. Импорт не добавляет места в обычные списки Google Карт.</p><a href="https://support.google.com/mymaps/answer/3024836?hl=ru" target="_blank" rel="noopener noreferrer">Инструкция Google</a></details></section>
+    <p id="collection-description">{places.length} {plural(places.length)} с категориями, описаниями и ссылками на Google Карты.</p>
+    <section className="collection-option"><h3>На этом устройстве</h3><p>Добавьте всю подборку в раздел «Сохранённые». Она останется в этом браузере.</p><Button className="collection-primary" onClick={saveCollection}>Сохранить {places.length} {plural(places.length)}</Button>{storageUnavailable&&<p role="status">Хранилище браузера недоступно. Скачайте CSV, чтобы сохранить подборку.</p>}</section>
+    <section className="collection-option"><h3>В Google My Maps</h3><p>Скачайте файл и импортируйте его в свою карту на компьютере.</p><div className="collection-export-actions"><a href={collectionDownload} download={`istanbul-${places.length}-places.csv`}>Скачать CSV</a><a href="https://www.google.com/maps/d/" target="_blank" rel="noopener noreferrer">Открыть My Maps</a></div><details><summary>Как добавить места на карту</summary><ol><li>В My Maps создайте карту и нажмите «Импорт».</li><li>Загрузите CSV. Для расположения выберите «Место для поиска», для названий — «Название».</li><li>Проверьте найденные адреса и филиалы. У четырёх мест расположение требует уточнения.</li></ol><p>Это отдельная карта My Maps. Импорт не добавляет места в обычные списки Google Карт.</p><a href="https://support.google.com/mymaps/answer/3024836?hl=ru" target="_blank" rel="noopener noreferrer">Инструкция Google</a></details></section>
    </div>
   </dialog>
   <main>
